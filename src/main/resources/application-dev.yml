@@ -13,4 +13,4 @@ logging:
     root: info
     zyy.show.blog: debug
   file:
-    path: log/blog-dev.log
+    path: D:\project\log\blog\blog-dev
