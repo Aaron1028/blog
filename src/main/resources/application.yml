@@ -1,5 +1,8 @@
 spring:
   thymeleaf:
     mode: HTML
+    servlet:
+      content-type: text/html
+    cache: false
   profiles:
     active: dev
