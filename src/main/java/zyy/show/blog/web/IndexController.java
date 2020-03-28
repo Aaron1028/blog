@@ -27,11 +27,6 @@ public class IndexController {
 
     @GetMapping("/blog")
     public String blog(){
-////        int i =9/0;
-//        String blog = null;
-//        if(blog == null){
-//            throw new NotFindException("blog not exist");//自定义异常
-//        }
         return "blog";
     }
 }
