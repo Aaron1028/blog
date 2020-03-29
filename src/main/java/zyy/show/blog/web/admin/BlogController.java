@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Aaron
  * @date 2020/3/28
  * @Description:
- */
+ * */
 @Controller
 @RequestMapping("/admin")
 public class BlogController {
 
     @GetMapping("/blogs")
-    public String blogs(){
+    public String blog(){
         return "admin/blogs";
     }
 }

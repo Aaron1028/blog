@@ -7,12 +7,14 @@ import java.security.NoSuchAlgorithmException;
  * @author Aaron
  * @date 2020/3/21
  * @Description: MD5加密类
- */
+ * */
 public class MD5Utils {
 
     /**
      * @auther: Aaron
-     * @date: 2020/3/21 21:00
+     * @date: 2020/3/29 15:43
+     * @param: [str]
+     * @return: java.lang.String
      * @Description:
      */
     public static String code(String str){
@@ -41,12 +43,9 @@ public class MD5Utils {
 
     }
 
-    /**
-     * @auther: Aaron
-     * @date: 2020/3/21 21:00
-     * @Description:
-     */
-    public static void main(String[] args) {
-        System.out.println(code("111111"));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(code("980404"));
+//    }
+
+
 }

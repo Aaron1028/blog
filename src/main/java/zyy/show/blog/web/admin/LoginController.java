@@ -2,7 +2,6 @@ package zyy.show.blog.web.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,8 +42,7 @@ public class LoginController {
             session.setAttribute("user",user);
             return "admin/index";
         }else {
-            attributes.addFlashAttribute("message", "用户名密码错误");
-
+            attributes.addFlashAttribute("message", "用户名和密码错误");
             return "redirect:/admin";
         }
     }
@@ -55,4 +53,6 @@ public class LoginController {
         session.removeAttribute("user");//清空user
         return "redirect:/admin";
     }
+
+
 }

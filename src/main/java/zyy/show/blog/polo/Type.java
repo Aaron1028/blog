@@ -1,6 +1,7 @@
 package zyy.show.blog.polo;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class Type {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     /*标签名*/
+    @NotBlank(message = "分类不能为空")//不能为空注解
     private String name;
 
     //表示实体关系，Many是博客，One是Type
