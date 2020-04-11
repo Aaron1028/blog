@@ -10,6 +10,7 @@ import zyy.show.blog.dao.TypeRepository;
 import zyy.show.blog.polo.Type;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * @author Aaron
@@ -43,6 +44,11 @@ public class TypeServiceImpl implements TypeService{
     @Override
     public Page<Type> listType(Pageable pageable) {
         return typeRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Type> listType() {
+        return typeRepository.findAll();
     }
 
     @Transactional

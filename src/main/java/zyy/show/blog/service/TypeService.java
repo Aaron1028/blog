@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import zyy.show.blog.polo.Type;
 
+import java.util.List;
+
 /**
  * @author Aaron
  * @date 2020/3/29
@@ -38,6 +40,13 @@ public interface TypeService {
      * @Description: 分页查询
      */
     Page<Type> listType(Pageable pageable);
+
+    /**
+     * @auther: Aaron
+     * @date: 2020/4/3 21:32
+     * @Description: 在blog页面中分类的下拉展示
+     */
+    List<Type> listType();
 
     /**
      * @auther: Aaron
