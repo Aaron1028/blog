@@ -50,6 +50,14 @@ public interface TypeService {
 
     /**
      * @auther: Aaron
+     * @date: 2020/5/3 22:30
+     * @param: [size]
+     * @Description: 在index页面右侧显示的type数量
+     */
+    List<Type> listTypeTop(Integer size);
+
+    /**
+     * @auther: Aaron
      * @date: 2020/3/29 17:56
      * @Description: 根据id先查询实体对象，然后再修改分类
      */

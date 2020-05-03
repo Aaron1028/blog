@@ -1,7 +1,6 @@
 package zyy.show.blog.polo;
 
 import javax.persistence.*;
-import java.awt.peer.CanvasPeer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +22,8 @@ public class Comment {
     /*邮箱*/
     private String email;
     /*评论内容*/
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
     private String content;
     /*头像*/
     private String avatar;
@@ -38,6 +39,8 @@ public class Comment {
     private List<Comment> replyComment = new ArrayList<>();//子评论
     @ManyToOne
     private Comment parentComment;//父评论
+
+    private boolean adminComment;
 
     public Comment() {
     }
@@ -114,6 +117,14 @@ public class Comment {
         this.parentComment = parentComment;
     }
 
+    public boolean isAdminComment() {
+        return adminComment;
+    }
+
+    public void setAdminComment(boolean adminComment) {
+        this.adminComment = adminComment;
+    }
+
     @Override
     public String toString() {
         return "Comment{" +
@@ -125,4 +136,5 @@ public class Comment {
                 ", createTime=" + createTime +
                 '}';
     }
+
 }

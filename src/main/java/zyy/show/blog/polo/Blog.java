@@ -21,29 +21,36 @@ public class Blog {
     /*标题*/
     private String title;
     /*博客内容*/
+    @Basic(fetch = FetchType.LAZY)
+    @Lob
     private String content;
     /*首图*/
     private String firstPicture;
     /*标记*/
     private String flag;
     /*浏览次数*/
-    private Integer view;
+    private Integer views;
     /*赞赏是否开启*/
     private boolean appreciation;
     /*版权是否开启*/
     private boolean shareStatement;
     /*是否能评论*/
-    private boolean commentAble;
+    private boolean commentabled;
     /*是否发布*/
-    private boolean publish;
+    private boolean published;
     /*是否推荐*/
     private boolean recommend;
     /*创建时间*/
     @Temporal(TemporalType.TIMESTAMP)
-    private Date creatTime;
+    private Date createTime;
     /*更新时间*/
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateTime;
+
+    @Transient
+    private String tagIds;
+
+    private String description;
 
     /*关于实体之间的关系，请看README.md*/
     //Many是博客，One是Type
@@ -58,6 +65,7 @@ public class Blog {
 
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
+
 
     public Blog() {
     }
@@ -102,12 +110,12 @@ public class Blog {
         this.flag = flag;
     }
 
-    public Integer getView() {
-        return view;
+    public Integer getViews() {
+        return views;
     }
 
-    public void setView(Integer view) {
-        this.view = view;
+    public void setViews(Integer views) {
+        this.views = views;
     }
 
     public boolean isAppreciation() {
@@ -126,20 +134,20 @@ public class Blog {
         this.shareStatement = shareStatement;
     }
 
-    public boolean isCommentAble() {
-        return commentAble;
+    public boolean isCommentabled() {
+        return commentabled;
     }
 
-    public void setCommentAble(boolean commentAble) {
-        this.commentAble = commentAble;
+    public void setCommentabled(boolean commentabled) {
+        this.commentabled = commentabled;
     }
 
-    public boolean isPublish() {
-        return publish;
+    public boolean isPublished() {
+        return published;
     }
 
-    public void setPublish(boolean publish) {
-        this.publish = publish;
+    public void setPublished(boolean published) {
+        this.published = published;
     }
 
     public boolean isRecommend() {
@@ -150,12 +158,12 @@ public class Blog {
         this.recommend = recommend;
     }
 
-    public Date getCreatTime() {
-        return creatTime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatTime(Date creatTime) {
-        this.creatTime = creatTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getUpdateTime() {
@@ -164,6 +172,22 @@ public class Blog {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Type getType() {
@@ -198,6 +222,30 @@ public class Blog {
         this.comments = comments;
     }
 
+    public void init() {
+        this.tagIds = tagsToIds(this.getTags());
+    }
+
+    //1,2,3
+    private String tagsToIds(List<Tag> tags) {
+        if (!tags.isEmpty()) {
+            StringBuffer ids = new StringBuffer();
+            boolean flag = false;
+            for (Tag tag : tags) {
+                if (flag) {
+                    ids.append(",");
+                } else {
+                    flag = true;
+                }
+                ids.append(tag.getId());
+            }
+            return ids.toString();
+        } else {
+            return tagIds;
+        }
+    }
+
+
     @Override
     public String toString() {
         return "Blog{" +
@@ -206,14 +254,20 @@ public class Blog {
                 ", content='" + content + '\'' +
                 ", firstPicture='" + firstPicture + '\'' +
                 ", flag='" + flag + '\'' +
-                ", view=" + view +
+                ", views=" + views +
                 ", appreciation=" + appreciation +
                 ", shareStatement=" + shareStatement +
-                ", commentAble=" + commentAble +
-                ", publish=" + publish +
+                ", commentabled=" + commentabled +
+                ", published=" + published +
                 ", recommend=" + recommend +
-                ", creatTime=" + creatTime +
+                ", CreateTime=" + createTime +
                 ", updateTime=" + updateTime +
+                ", tagIds='" + tagIds + '\'' +
+                ", description='" + description + '\'' +
+                ", type=" + type +
+                ", tags=" + tags +
+                ", user=" + user +
+                ", comments=" + comments +
                 '}';
     }
 }

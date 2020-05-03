@@ -6,6 +6,9 @@ import org.springframework.data.domain.Pageable;
 import zyy.show.blog.polo.Blog;
 import zyy.show.blog.vo.BlogQuery;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
+
 /**
  * @author Aaron
  * @date 2020/4/3
@@ -28,6 +31,16 @@ public interface BlogService  {
      * @Description: 分页查询
      */
     Page<Blog> listBlog(Pageable pageable, BlogQuery blog);
+
+    /**
+     * @auther: Aaron
+     * @date: 2020/5/3 22:26
+     * @param: [blog]
+     * @Description: 分页查询
+     */
+    Page<Blog> listBlog(Pageable pageable);
+
+    List<Blog> listRecommendBlogTop(Integer size);
 
     /**
      * @auther: Aaron

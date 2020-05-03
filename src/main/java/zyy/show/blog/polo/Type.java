@@ -18,6 +18,7 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     /*标签名*/
     @NotBlank(message = "分类不能为空")//不能为空注解
     private String name;
@@ -58,6 +59,7 @@ public class Type {
         return "Type{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", blogs=" + blogs +
                 '}';
     }
 }
