@@ -21,21 +21,16 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/admin")
 public class LoginController {
-
     @Autowired
     private UserService userService;
-
     @GetMapping
     public String loginPage(){
         return "admin/login";
     }
 
-
     @PostMapping("/login")
-    public String login(@RequestParam String username,
-                        @RequestParam String password,
-                        HttpSession session,
-                        RedirectAttributes attributes){
+    public String login(@RequestParam String username, @RequestParam String password,
+                        HttpSession session, RedirectAttributes attributes){
         User user = userService.checkUser(username, password);
         if(user != null){
             user.setPassword(null);//不要将密码传到页面
@@ -46,13 +41,9 @@ public class LoginController {
             return "redirect:/admin";
         }
     }
-
-
     @GetMapping("/logout")
     public String logout(HttpSession session){
         session.removeAttribute("user");//清空user
         return "redirect:/admin";
     }
-
-
 }

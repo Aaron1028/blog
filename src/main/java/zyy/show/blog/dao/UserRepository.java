@@ -10,5 +10,7 @@ import zyy.show.blog.polo.User;
  */
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    User findByUsernameAndPassword(String username, String password);//根据用户名和密码查询数据库
+    //根据用户名和密码查询数据库
+    User findByUsernameAndPassword(String username, String password);
+
 }

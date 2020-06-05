@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * @author Aaron
  * @date 2020/3/20
- * @Description: 拦截error错误，返回error.html
+ * @Description: 拦截error错误，返回error/的页面
  */
 @ControllerAdvice
 public class ControllerExceptionHandler {

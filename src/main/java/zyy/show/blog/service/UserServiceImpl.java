@@ -17,6 +17,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    /**
+     * @Description: 验证用户名密码
+     */
     @Override
     public User checkUser(String username, String password) {
         User user = userRepository.findByUsernameAndPassword(username, MD5Utils.code(password));

@@ -6,3 +6,8 @@ spring:
     cache: false
   profiles:
     active: dev
+  messages:
+    basename: i18n.login
+
+
+comment.avatar: /images/avatar.png

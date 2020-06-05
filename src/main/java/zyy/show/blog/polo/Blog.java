@@ -66,7 +66,6 @@ public class Blog {
     @OneToMany(mappedBy = "blog")
     private List<Comment> comments = new ArrayList<>();
 
-
     public Blog() {
     }
 
@@ -174,22 +173,6 @@ public class Blog {
         this.updateTime = updateTime;
     }
 
-    public String getTagIds() {
-        return tagIds;
-    }
-
-    public void setTagIds(String tagIds) {
-        this.tagIds = tagIds;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Type getType() {
         return type;
     }
@@ -206,6 +189,7 @@ public class Blog {
         this.tags = tags;
     }
 
+
     public User getUser() {
         return user;
     }
@@ -214,12 +198,30 @@ public class Blog {
         this.user = user;
     }
 
+
     public List<Comment> getComments() {
         return comments;
     }
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+
+    public String getTagIds() {
+        return tagIds;
+    }
+
+    public void setTagIds(String tagIds) {
+        this.tagIds = tagIds;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void init() {
@@ -260,14 +262,15 @@ public class Blog {
                 ", commentabled=" + commentabled +
                 ", published=" + published +
                 ", recommend=" + recommend +
-                ", CreateTime=" + createTime +
+                ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
-                ", tagIds='" + tagIds + '\'' +
-                ", description='" + description + '\'' +
                 ", type=" + type +
                 ", tags=" + tags +
                 ", user=" + user +
                 ", comments=" + comments +
+                ", tagIds='" + tagIds + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
+
 }

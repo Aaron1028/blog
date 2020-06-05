@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Aaron
  * @date 2020/3/21
- * @Description: 标签类
+ * @Description: 博客标签类
  */
 
 @Entity

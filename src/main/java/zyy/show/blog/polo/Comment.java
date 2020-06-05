@@ -36,7 +36,7 @@ public class Comment {
 
     /*评论与子评论的关系*/
     @OneToMany(mappedBy = "parentComment")
-    private List<Comment> replyComment = new ArrayList<>();//子评论
+    private List<Comment> ReplyComments = new ArrayList<>();//子评论
     @ManyToOne
     private Comment parentComment;//父评论
 
@@ -101,12 +101,12 @@ public class Comment {
         this.blog = blog;
     }
 
-    public List<Comment> getReplyComment() {
-        return replyComment;
+    public List<Comment> getReplyComments() {
+        return ReplyComments;
     }
 
-    public void setReplyComment(List<Comment> replyComment) {
-        this.replyComment = replyComment;
+    public void setReplyComments(List<Comment> replyComments) {
+        ReplyComments = replyComments;
     }
 
     public Comment getParentComment() {

@@ -3,7 +3,7 @@ package zyy.show.blog.vo;
 /**
  * @author Aaron
  * @date 2020/4/3
- * @Description:
+ * @Description: 博客查询页面
  */
 public class BlogQuery {
 

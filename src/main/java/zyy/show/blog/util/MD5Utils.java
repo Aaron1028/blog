@@ -9,14 +9,6 @@ import java.security.NoSuchAlgorithmException;
  * @Description: MD5加密类
  * */
 public class MD5Utils {
-
-    /**
-     * @auther: Aaron
-     * @date: 2020/3/29 15:43
-     * @param: [str]
-     * @return: java.lang.String
-     * @Description:
-     */
     public static String code(String str){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -34,18 +26,13 @@ public class MD5Utils {
             }
             //32位加密
             return buf.toString();
-            // 16位的加密
-            //return buf.toString().substring(8, 24);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             return null;
         }
-
     }
-
-//    public static void main(String[] args) {
-//        System.out.println(code("980404"));
-//    }
-
-
+    /*得出加密后的密钥，数据库保存的是加密后的密码*/
+    public static void main(String[] args) {
+        System.out.println(code("980404"));
+    }
 }

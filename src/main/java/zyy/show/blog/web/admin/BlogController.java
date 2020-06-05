@@ -43,51 +43,16 @@ public class BlogController {
     @Autowired
     private TagService tagService;
 
+    /*分页展示博客，一页最多显示8条记录*/
     @GetMapping("/blogs")
-    public String blog(@PageableDefault(size = 3, sort = {"updateTime"}, direction = Sort.Direction.DESC)
+    public String blog(@PageableDefault(size = 8, sort = {"updateTime"}, direction = Sort.Direction.DESC)
                                    Pageable pageable, BlogQuery blog, Model model){
         model.addAttribute("types", typeService.listType());
         model.addAttribute("page", blogService.listBlog(pageable, blog));
         return LIST;
     }
 
-    @PostMapping("/blogs/search")
-    public String search(@PageableDefault(size = 3, sort = {"updateTime"}, direction = Sort.Direction.DESC)
-                               Pageable pageable, BlogQuery blog, Model model){
-        model.addAttribute("page", blogService.listBlog(pageable, blog));
-        return "admin/blogs :: blogList";//返回blogs页面下的一个blogList片段
-    }
-
-    /**
-     * @auther: Aaron
-     * @date: 2020/5/3 15:29
-     * @return: java.lang.String
-     * @Description: admin/blogs-input
-     */
-    @GetMapping("/blogs/input")
-    public String input(Model model) {
-        setTypeAndTag(model);
-        model.addAttribute("blog", new Blog());
-        return INPUT;
-    }
-
-    private void setTypeAndTag(Model model) {
-        model.addAttribute("types", typeService.listType());
-        model.addAttribute("tags", tagService.listTag());
-    }
-
-
-    @GetMapping("/blogs/{id}/input")
-    public String editInput(@PathVariable Long id, Model model) {
-        setTypeAndTag(model);
-        Blog blog = blogService.getBlog(id);
-        blog.init();
-        model.addAttribute("blog",blog);
-        return INPUT;
-    }
-
-
-
+    /*展示博客列表页面*/
     @PostMapping("/blogs")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session) {
         blog.setUser((User) session.getAttribute("user"));
@@ -99,7 +64,6 @@ public class BlogController {
         } else {
             b = blogService.updateBlog(blog.getId(), blog);
         }
-
         if (b == null ) {
             attributes.addFlashAttribute("message", "操作失败");
         } else {
@@ -109,11 +73,51 @@ public class BlogController {
     }
 
 
+
+    /*新增博客*/
+    @GetMapping("/blogs/input")
+    public String input(Model model) {
+        setTypeAndTag(model);
+        model.addAttribute("blog", new Blog());
+        return INPUT;
+    }
+
+    /*修改博客*/
+    @GetMapping("/blogs/{id}/input")
+    public String editInput(@PathVariable Long id, Model model) {
+        setTypeAndTag(model);
+        Blog blog = blogService.getBlog(id);
+        blog.init();
+        model.addAttribute("blog",blog);
+        return INPUT;
+    }
+
+    /*删除博客*/
     @GetMapping("/blogs/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes) {
         blogService.deleteBlog(id);
         attributes.addFlashAttribute("message", "删除成功");
         return REDIRECT_LIST;
     }
+
+    /*搜索博客的功能*/
+    @PostMapping("/blogs/search")
+    public String search(@PageableDefault(size = 3, sort = {"updateTime"}, direction = Sort.Direction.DESC)
+                                 Pageable pageable, BlogQuery blog, Model model){
+        model.addAttribute("page", blogService.listBlog(pageable, blog));
+        return "admin/blogs :: blogList";//返回blogs页面下的一个blogList片段
+    }
+
+    /*新增博客的分类和标签*/
+    private void setTypeAndTag(Model model) {
+        model.addAttribute("types", typeService.listType());
+        model.addAttribute("tags", tagService.listTag());
+    }
+
+
+
+
+
+
 
 }

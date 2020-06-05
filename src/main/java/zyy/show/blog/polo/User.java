@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author Aaron
  * @date 2020/3/21
- * @Description:
+ * @Description: 用户类
  */
 
 @Entity
